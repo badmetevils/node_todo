@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "434199f7-b597-43aa-964d-32894f564805",
+		"name": "Node Assignment",
+		"description": "Node Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"role\":\"regular\",\n\t\"email\":\"three@example.com\",\n\t\"name\":\"Tanuj Sharma\",\n\t\"password\":\"secret\"\n\t\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/register",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"admin@example.com\",\n\t\"password\":\"secret\"\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User todo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTc4YTI4MTgyNDMxMjQ0YjE0YzcwNiIsIm5hbWUiOiJ0YW51aiBTaGFybWEiLCJpYXQiOjE1NTM0MzkyMTQsImV4cCI6MTU1MzQ0MjgxNH0.wtuNAmQyxo8KrhYsofbl3iOPV8KbTOKbLNSWD9R81PU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"todos\":[\n\t\t{\n\t\t\t\"name\":\"Bring Milks\",\n\t\t\t\"id\":0\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Bring Clothes\",\n\t\t\t\"id\":1\n\t\t}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/get_todo",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"get_todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdhMzcwYjNiZDI5MjcyNzA2NTE1NSIsIm5hbWUiOiJUYW51aiBTaGFybWEiLCJpYXQiOjE1NTM0NDE2OTIsImV4cCI6MTU1MzQ0NTI5Mn0.CCmsnuA2OjB_ZG6CBiZ0wFre8bCk4t1fNMJPouGIqn4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"todos\":[\n\t\t{\n\t\t\t\"name\":\"Bring Milks\",\n\t\t\t\"id\":0\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Bring Clothes\",\n\t\t\t\"id\":1\n\t\t}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/info",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get All User Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdhMzcwYjNiZDI5MjcyNzA2NTE1NSIsIm5hbWUiOiJUYW51aiBTaGFybWEiLCJpYXQiOjE1NTM0NDE2OTIsImV4cCI6MTU1MzQ0NTI5Mn0.CCmsnuA2OjB_ZG6CBiZ0wFre8bCk4t1fNMJPouGIqn4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"todos\":[\n\t\t{\n\t\t\t\"name\":\"Bring Milks\",\n\t\t\t\"id\":0\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Bring Clothes\",\n\t\t\t\"id\":1\n\t\t}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/admin/get_user_details",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"get_user_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b4e725f-f0aa-4080-bca4-992f53716c0a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdhMzcwYjNiZDI5MjcyNzA2NTE1NSIsIm5hbWUiOiJUYW51aiBTaGFybWEiLCJpYXQiOjE1NTM0NDE4NzgsImV4cCI6MTU1MzQ0NTQ3OH0.a1naE-k6RTvDZqGt0D811YiNnNbNpGgo5TdfH_UJO4I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{domain}}/api/admin/delete_user/{{uid}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"delete_user",
+						"{{uid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Update User Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b4e725f-f0aa-4080-bca4-992f53716c0a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdhMzcwYjNiZDI5MjcyNzA2NTE1NSIsIm5hbWUiOiJUYW51aiBTaGFybWEiLCJpYXQiOjE1NTM0NDE4NzgsImV4cCI6MTU1MzQ0NTQ3OH0.a1naE-k6RTvDZqGt0D811YiNnNbNpGgo5TdfH_UJO4I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Neha Sharma\",\n\t\"password\":\"123\"\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/admin/update_user/{{uid}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"update_user",
+						"{{uid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "759c8dfe-f876-4b0c-bd7a-77e3eff96191",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "defec70a-9009-4685-98f9-2da1f14748e3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "bf4d77f7-78dd-44ff-878c-69704a781867",
+			"key": "domain",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"id": "fbfb60f9-5521-4053-81b6-1374e18a0253",
+			"key": "uid",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
