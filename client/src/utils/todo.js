@@ -11,7 +11,7 @@ const Todo = {
     }).then(res => res.json());
   },
   actionTodo(token, payload) {
-    return fetch(`${baseUrl}/api/users/todo`, {
+    return fetch(`${baseUrl}/api/users/todo/_bulk`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

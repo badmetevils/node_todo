@@ -108,7 +108,7 @@ router.get('/validate', passport.authenticate('jwt', { session: false }), (req, 
  * @description:  User Can Add Todo List
  */
 
-router.post('/todo', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/todo/_bulk', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { todos } = req.body;
   const { id } = req.user;
   User.findById(id).then(user => {
@@ -122,6 +122,86 @@ router.post('/todo', passport.authenticate('jwt', { session: false }), (req, res
   });
 });
 
+/*
+ * @route : POST /api/user/add_todo
+ * @access : Private
+ * @description:  Add  todo's
+ */
+
+router.post('/add_todo', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const todos = { ...req.body };
+  const { id } = req.user;
+  if (todos.constructor.name === 'Object') {
+    User.findById(id).then(user => {
+      if (user) {
+        const newTodos = [...user.todos, { ...todos }];
+        console.log(newTodos);
+        user.todos = newTodos;
+        user.save();
+        res.json({ message: 'Added Todos Successfully ', todos: user.todos });
+      } else {
+        return res.status(400).json({ error: 'Something went wrong while saving' });
+      }
+    });
+  } else {
+    return res.status(500).json({ error: 'Expecting an Object in body' });
+  }
+});
+
+/*
+ * @route : DELETE /api/user/add_todo
+ * @access : Private
+ * @description:  Add  todo's
+ */
+
+router.delete('/delete_todo/:todo_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { todo_id } = req.params;
+  const { id } = req.user;
+  User.findById(id).then(user => {
+    if (user) {
+      const newTodos = user.todos.filter(d => {
+        if (todo_id != d._id) return true;
+      });
+      console.log(newTodos);
+      user.todos = newTodos;
+      user.save();
+      res.json({ message: 'Deleted Todos Successfully ', todos: user.todos });
+    } else {
+      return res.status(400).json({ error: 'Something went wrong while saving' });
+    }
+  });
+});
+
+/*
+ * @route : UPDATE /api/user/update_todo
+ * @access : Private
+ * @description:  Add  todo's
+ */
+
+router.post('/update_todo/:todo_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { todo_id } = req.params;
+  const { id } = req.user;
+  const update = { ...req.body };
+  if (update.constructor.name === 'Object') {
+    User.findById(id).then(user => {
+      if (user) {
+        const newTodo = [...user.todos];
+        const index = newTodo.findIndex(d => {
+          if (todo_id == d._id) return true;
+        });
+        console.log(index);
+        newTodo[index] = { ...update, _id: newTodo[index]._id };
+        user.todos = newTodo;
+        user.save();
+        res.json({ message: 'Updated Todos Successfully ', todos: user.todos });
+      } else {
+        return res.status(400).json({ error: 'Something went wrong while saving' });
+      }
+    });
+  } else {
+    return res.status(500).json({ error: 'Expecting a Object in body' });
+  }
+});
 /*
  * @route : POST /api/user/todo
  * @access : Private

@@ -20,7 +20,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"role\":\"regular\",\n\t\"email\":\"three@example.com\",\n\t\"name\":\"Tanuj Sharma\",\n\t\"password\":\"secret\"\n\t\n}"
+					"raw": "{\n\t\"role\":\"regular\",\n\t\"email\":\"user@todo.com\",\n\t\"name\":\"Tanuj Sharma\",\n\t\"password\":\"secret\"\n\t\n}"
 				},
 				"url": {
 					"raw": "{{domain}}/api/users/register",
@@ -50,7 +50,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\":\"admin@example.com\",\n\t\"password\":\"secret\"\n}"
+					"raw": "{\n\t\"email\":\"tanuj@gmail.com\",\n\t\"password\":\"123\"\n}"
 				},
 				"url": {
 					"raw": "{{domain}}/api/users/login",
@@ -67,7 +67,129 @@
 			"response": []
 		},
 		{
-			"name": "User todo",
+			"name": "User Add todo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdiODlkNTFjMWZkMjk1MTE0MmM1NiIsIm5hbWUiOiJ0YW51aiIsImlhdCI6MTU1MzQ3OTM0NSwiZXhwIjoxNTUzNDgyOTQ1fQ.GTS16o5w2rqrWbBHUQDsKM5upghxl0bmtyQWoDWi_L4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\":\"<Todo Name >\",\n\"isCompleted\":true\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/add_todo",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"add_todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Update todo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdiODlkNTFjMWZkMjk1MTE0MmM1NiIsIm5hbWUiOiJ0YW51aiIsImlhdCI6MTU1MzQ3OTM0NSwiZXhwIjoxNTUzNDgyOTQ1fQ.GTS16o5w2rqrWbBHUQDsKM5upghxl0bmtyQWoDWi_L4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\":\"Raname the task\",\n\"isCompleted\":true\n}"
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/update_todo/{{todo_id}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"update_todo",
+						"{{todo_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Delte todo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdiODlkNTFjMWZkMjk1MTE0MmM1NiIsIm5hbWUiOiJ0YW51aiIsImlhdCI6MTU1MzQ3OTM0NSwiZXhwIjoxNTUzNDgyOTQ1fQ.GTS16o5w2rqrWbBHUQDsKM5upghxl0bmtyQWoDWi_L4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{domain}}/api/users/delete_todo/{{todo_id}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"delete_todo",
+						"{{todo_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User todo list",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -77,7 +199,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTc4YTI4MTgyNDMxMjQ0YjE0YzcwNiIsIm5hbWUiOiJ0YW51aiBTaGFybWEiLCJpYXQiOjE1NTM0MzkyMTQsImV4cCI6MTU1MzQ0MjgxNH0.wtuNAmQyxo8KrhYsofbl3iOPV8KbTOKbLNSWD9R81PU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdiODlkNTFjMWZkMjk1MTE0MmM1NiIsIm5hbWUiOiJ0YW51aiIsImlhdCI6MTU1MzQ3OTM0NSwiZXhwIjoxNTUzNDgyOTQ1fQ.GTS16o5w2rqrWbBHUQDsKM5upghxl0bmtyQWoDWi_L4",
 							"type": "string"
 						}
 					]
@@ -93,7 +215,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"todos\":[\n\t\t{\n\t\t\t\"name\":\"Bring Milks\",\n\t\t\t\"id\":0\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Bring Clothes\",\n\t\t\t\"id\":1\n\t\t}\n\t\t]\n}"
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{domain}}/api/users/get_todo",
@@ -120,7 +242,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdhMzcwYjNiZDI5MjcyNzA2NTE1NSIsIm5hbWUiOiJUYW51aiBTaGFybWEiLCJpYXQiOjE1NTM0NDE2OTIsImV4cCI6MTU1MzQ0NTI5Mn0.CCmsnuA2OjB_ZG6CBiZ0wFre8bCk4t1fNMJPouGIqn4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdiODlkNTFjMWZkMjk1MTE0MmM1NiIsIm5hbWUiOiJ0YW51aiIsImlhdCI6MTU1MzQ3OTM0NSwiZXhwIjoxNTUzNDgyOTQ1fQ.GTS16o5w2rqrWbBHUQDsKM5upghxl0bmtyQWoDWi_L4",
 							"type": "string"
 						}
 					]
@@ -163,7 +285,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdhMzcwYjNiZDI5MjcyNzA2NTE1NSIsIm5hbWUiOiJUYW51aiBTaGFybWEiLCJpYXQiOjE1NTM0NDE2OTIsImV4cCI6MTU1MzQ0NTI5Mn0.CCmsnuA2OjB_ZG6CBiZ0wFre8bCk4t1fNMJPouGIqn4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOTdiODlkNTFjMWZkMjk1MTE0MmM1NiIsIm5hbWUiOiJ0YW51aiIsImlhdCI6MTU1MzQ3OTM0NSwiZXhwIjoxNTUzNDgyOTQ1fQ.GTS16o5w2rqrWbBHUQDsKM5upghxl0bmtyQWoDWi_L4",
 							"type": "string"
 						}
 					]
@@ -329,14 +451,20 @@
 	],
 	"variable": [
 		{
-			"id": "bf4d77f7-78dd-44ff-878c-69704a781867",
+			"id": "5c0dcd27-36dc-4469-ae2f-516a051680d5",
 			"key": "domain",
 			"value": "localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "fbfb60f9-5521-4053-81b6-1374e18a0253",
+			"id": "eaad935d-fe41-4070-85ed-21f162f3a4f2",
 			"key": "uid",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "ec853914-2b16-4297-abe5-3d443b4d0731",
+			"key": "todo_id",
 			"value": "",
 			"type": "string"
 		}

@@ -13,7 +13,12 @@ router.get('/get_user_details', passport.authenticate('jwt', { session: false })
   const { role } = req.user;
   if (role == 'admin') {
     User.find({}).then(function(users) {
-      res.json(users);
+      const userData = users.map(user => {
+        const { name, email, role, todos, created_on, _id } = user;
+        const obj = { created_on, _id, name, email, role, todos };
+        return obj;
+      });
+      res.json(userData);
     });
   } else {
     res.status(401).json({ error: 'Require Admin previlages' });
