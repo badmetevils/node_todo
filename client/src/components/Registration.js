@@ -16,9 +16,11 @@ const Reginstration = props => {
           const { message, error } = response;
           setMessage(message);
           setError(error);
-          setTimeout(() => {
-            props.history.push('/login');
-          }, 1000);
+          if (!error) {
+            setTimeout(() => {
+              props.history.push('/login');
+            }, 1000);
+          }
         })
         .catch(err => console.log(err));
     } else {
